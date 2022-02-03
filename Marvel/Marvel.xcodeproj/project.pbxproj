@@ -14,6 +14,18 @@
 		32916C3127ABD538000DB6BE /* MarvelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32916C3027ABD538000DB6BE /* MarvelTests.swift */; };
 		32916C3B27ABD538000DB6BE /* MarvelUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32916C3A27ABD538000DB6BE /* MarvelUITests.swift */; };
 		32916C3D27ABD538000DB6BE /* MarvelUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32916C3C27ABD538000DB6BE /* MarvelUITestsLaunchTests.swift */; };
+		32916C4F27ABD58B000DB6BE /* EndpointType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32916C4A27ABD58B000DB6BE /* EndpointType.swift */; };
+		32916C5027ABD58B000DB6BE /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32916C4B27ABD58B000DB6BE /* HTTPMethod.swift */; };
+		32916C5127ABD58B000DB6BE /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32916C4C27ABD58B000DB6BE /* APIError.swift */; };
+		32916C5227ABD58B000DB6BE /* ServerEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32916C4D27ABD58B000DB6BE /* ServerEnvironment.swift */; };
+		32916C5327ABD58B000DB6BE /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32916C4E27ABD58B000DB6BE /* APIClient.swift */; };
+		32916C5627ABD64B000DB6BE /* Resolver in Frameworks */ = {isa = PBXBuildFile; productRef = 32916C5527ABD64B000DB6BE /* Resolver */; };
+		32916C5E27ABD765000DB6BE /* MockAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32916C5927ABD765000DB6BE /* MockAPIClient.swift */; };
+		32916C5F27ABD765000DB6BE /* SampleCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32916C5A27ABD765000DB6BE /* SampleCodable.swift */; };
+		32916C6027ABD765000DB6BE /* JSONParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32916C5B27ABD765000DB6BE /* JSONParser.swift */; };
+		32916C6127ABD765000DB6BE /* BlockTestProtocolHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32916C5C27ABD765000DB6BE /* BlockTestProtocolHandler.swift */; };
+		32916C6427ABD794000DB6BE /* APIClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32916C6327ABD794000DB6BE /* APIClientTests.swift */; };
+		32916C6627ABE857000DB6BE /* SampleEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32916C6527ABE857000DB6BE /* SampleEndpoint.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +56,17 @@
 		32916C3627ABD538000DB6BE /* MarvelUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MarvelUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		32916C3A27ABD538000DB6BE /* MarvelUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelUITests.swift; sourceTree = "<group>"; };
 		32916C3C27ABD538000DB6BE /* MarvelUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		32916C4A27ABD58B000DB6BE /* EndpointType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndpointType.swift; sourceTree = "<group>"; };
+		32916C4B27ABD58B000DB6BE /* HTTPMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
+		32916C4C27ABD58B000DB6BE /* APIError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
+		32916C4D27ABD58B000DB6BE /* ServerEnvironment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerEnvironment.swift; sourceTree = "<group>"; };
+		32916C4E27ABD58B000DB6BE /* APIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		32916C5927ABD765000DB6BE /* MockAPIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockAPIClient.swift; sourceTree = "<group>"; };
+		32916C5A27ABD765000DB6BE /* SampleCodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleCodable.swift; sourceTree = "<group>"; };
+		32916C5B27ABD765000DB6BE /* JSONParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONParser.swift; sourceTree = "<group>"; };
+		32916C5C27ABD765000DB6BE /* BlockTestProtocolHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlockTestProtocolHandler.swift; sourceTree = "<group>"; };
+		32916C6327ABD794000DB6BE /* APIClientTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIClientTests.swift; sourceTree = "<group>"; };
+		32916C6527ABE857000DB6BE /* SampleEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleEndpoint.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				32916C5627ABD64B000DB6BE /* Resolver in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -97,6 +121,7 @@
 				32916C1F27ABD534000DB6BE /* MarvelApp.swift */,
 				32916C2127ABD534000DB6BE /* ContentView.swift */,
 				32916C2327ABD538000DB6BE /* Assets.xcassets */,
+				32916C4927ABD56F000DB6BE /* Networking */,
 				32916C2527ABD538000DB6BE /* Preview Content */,
 			);
 			path = Marvel;
@@ -113,6 +138,7 @@
 		32916C2F27ABD538000DB6BE /* MarvelTests */ = {
 			isa = PBXGroup;
 			children = (
+				32916C5727ABD73B000DB6BE /* NetworkTests */,
 				32916C3027ABD538000DB6BE /* MarvelTests.swift */,
 			);
 			path = MarvelTests;
@@ -125,6 +151,39 @@
 				32916C3C27ABD538000DB6BE /* MarvelUITestsLaunchTests.swift */,
 			);
 			path = MarvelUITests;
+			sourceTree = "<group>";
+		};
+		32916C4927ABD56F000DB6BE /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				32916C4E27ABD58B000DB6BE /* APIClient.swift */,
+				32916C4C27ABD58B000DB6BE /* APIError.swift */,
+				32916C4A27ABD58B000DB6BE /* EndpointType.swift */,
+				32916C4B27ABD58B000DB6BE /* HTTPMethod.swift */,
+				32916C4D27ABD58B000DB6BE /* ServerEnvironment.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		32916C5727ABD73B000DB6BE /* NetworkTests */ = {
+			isa = PBXGroup;
+			children = (
+				32916C6327ABD794000DB6BE /* APIClientTests.swift */,
+				32916C5827ABD758000DB6BE /* Helpers */,
+			);
+			path = NetworkTests;
+			sourceTree = "<group>";
+		};
+		32916C5827ABD758000DB6BE /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				32916C5C27ABD765000DB6BE /* BlockTestProtocolHandler.swift */,
+				32916C5B27ABD765000DB6BE /* JSONParser.swift */,
+				32916C5927ABD765000DB6BE /* MockAPIClient.swift */,
+				32916C5A27ABD765000DB6BE /* SampleCodable.swift */,
+				32916C6527ABE857000DB6BE /* SampleEndpoint.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -143,6 +202,9 @@
 			dependencies = (
 			);
 			name = Marvel;
+			packageProductDependencies = (
+				32916C5527ABD64B000DB6BE /* Resolver */,
+			);
 			productName = Marvel;
 			productReference = 32916C1C27ABD534000DB6BE /* Marvel.app */;
 			productType = "com.apple.product-type.application";
@@ -215,6 +277,9 @@
 				Base,
 			);
 			mainGroup = 32916C1327ABD534000DB6BE;
+			packageReferences = (
+				32916C5427ABD64B000DB6BE /* XCRemoteSwiftPackageReference "Resolver" */,
+			);
 			productRefGroup = 32916C1D27ABD534000DB6BE /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -257,8 +322,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				32916C5027ABD58B000DB6BE /* HTTPMethod.swift in Sources */,
+				32916C5327ABD58B000DB6BE /* APIClient.swift in Sources */,
 				32916C2227ABD534000DB6BE /* ContentView.swift in Sources */,
+				32916C5227ABD58B000DB6BE /* ServerEnvironment.swift in Sources */,
 				32916C2027ABD534000DB6BE /* MarvelApp.swift in Sources */,
+				32916C5127ABD58B000DB6BE /* APIError.swift in Sources */,
+				32916C4F27ABD58B000DB6BE /* EndpointType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,6 +337,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				32916C3127ABD538000DB6BE /* MarvelTests.swift in Sources */,
+				32916C5E27ABD765000DB6BE /* MockAPIClient.swift in Sources */,
+				32916C6027ABD765000DB6BE /* JSONParser.swift in Sources */,
+				32916C6627ABE857000DB6BE /* SampleEndpoint.swift in Sources */,
+				32916C6427ABD794000DB6BE /* APIClientTests.swift in Sources */,
+				32916C5F27ABD765000DB6BE /* SampleCodable.swift in Sources */,
+				32916C6127ABD765000DB6BE /* BlockTestProtocolHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -579,6 +655,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		32916C5427ABD64B000DB6BE /* XCRemoteSwiftPackageReference "Resolver" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hmlongco/Resolver";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		32916C5527ABD64B000DB6BE /* Resolver */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 32916C5427ABD64B000DB6BE /* XCRemoteSwiftPackageReference "Resolver" */;
+			productName = Resolver;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 32916C1427ABD534000DB6BE /* Project object */;
 }
