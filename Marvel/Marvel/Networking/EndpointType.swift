@@ -13,11 +13,11 @@ typealias HTTPHeaders = [String: String]
 
 protocol EndpointType {
     var method: HTTPMethod { get }
-    var headers: HTTPHeaders? { get set }
-    var payload: HTTPParameters? { get set }
+    var headers: HTTPHeaders? { get }
+    var queryItems: [URLQueryItem] { get }
     var subPath: String { get }
     var timeout: Double { get }
-    func buildRequest(_ environment: ServerEnvironment) -> URLRequest
+    var request: URLRequest { get }
 }
 
 

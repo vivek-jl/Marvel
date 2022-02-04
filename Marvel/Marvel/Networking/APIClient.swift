@@ -11,11 +11,7 @@ import Foundation
 
 
 protocol APIClientType {
-    init(
-        configuration: URLSessionConfiguration,
-        environment: ServerEnvironment
-    )
-    func change(environment: ServerEnvironment)
+    init(configuration: URLSessionConfiguration)
     func request<T: Decodable>(
         type: T.Type,
         endpoint: EndpointType
@@ -24,23 +20,14 @@ protocol APIClientType {
 
 final class APIClient: APIClientType {
     private let sessionConfiguration: URLSessionConfiguration
-    private(set) var environment: ServerEnvironment
     private lazy var urlSession = URLSession(
         configuration: sessionConfiguration,
         delegate: nil,
         delegateQueue: nil
     )
     
-    required init(
-        configuration: URLSessionConfiguration = Resolver.resolve(),
-        environment: ServerEnvironment = Resolver.resolve()
-    ) {
+    required init(configuration: URLSessionConfiguration) {
         self.sessionConfiguration = configuration
-        self.environment = environment
-    }
-    
-    func change(environment: ServerEnvironment) {
-        self.environment = environment
     }
     
     func request<T: Decodable>(
@@ -55,7 +42,7 @@ final class APIClient: APIClientType {
     }
     
     private func getData(endpoint: EndpointType) -> AnyPublisher<Data, APIError> {
-        let urlRequest = endpoint.buildRequest(environment)
+        let urlRequest = endpoint.request
         return urlSession.dataTaskPublisher(for: urlRequest)
             .tryMap { try self.validate(result: $0) }
             .mapError { APIError(from: $0) }
