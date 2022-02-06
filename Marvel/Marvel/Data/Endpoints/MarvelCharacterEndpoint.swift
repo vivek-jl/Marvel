@@ -9,7 +9,7 @@ import Foundation
 
 struct MarvelCharacterEndpoint: EndpointType {
     var method: HTTPMethod = .get
-    var subPath: String = "/v1/public/comics"
+    var subPath: String = "/v1/public/characters"
     var headers: HTTPHeaders? = nil
     var queryItems: [URLQueryItem] {
         return commonQueryItems
