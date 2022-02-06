@@ -24,9 +24,10 @@ struct CharacterDetailsView: View {
                         .indicator(SDWebImageProgressIndicator.default)
                         .transition(SDWebImageTransition.fade)
                         .resizable()
-                        .scaledToFit()
+                        .scaledToFill()
                         .frame(width: geomety.size.width,
-                               height: geomety.size.height / 3)            .clipped()
+                               height: geomety.size.height / 2.5)
+                        .clipped()
                     
                     if let description = viewModel.character?.description {
                         HStack {
