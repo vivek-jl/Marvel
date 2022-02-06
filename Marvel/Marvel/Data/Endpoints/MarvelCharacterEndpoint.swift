@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct MarvelEndpoint: EndpointType {
+struct MarvelCharacterEndpoint: EndpointType {
     var method: HTTPMethod = .get
     var subPath: String = "/v1/public/comics"
     var headers: HTTPHeaders? = nil

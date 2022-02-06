@@ -26,15 +26,13 @@ extension EndpointType {
     }
     
     var commonQueryItems: [URLQueryItem] {
-        let apiKey = "35e39ba19c642a74198dc83e0374c5d2"
-        let privateKey = "331dd17d8c63d24f6ca609ab71ab96d3c70e97ce"
         let timeStamp = "\(Date().timeIntervalSince1970)"
-        let hash = MD5(string: "\(timeStamp)\(privateKey)\(apiKey)")
+        let hash = MD5(string: "\(timeStamp)\(APISecrets.privateKey)\(APISecrets.publicKey)")
         
         return   [
             URLQueryItem(name: "ts", value: timeStamp),
             URLQueryItem(name: "hash", value: hash),
-            URLQueryItem(name: "apikey", value: apiKey)
+            URLQueryItem(name: "apikey", value: APISecrets.publicKey)
         ]
     }
    
