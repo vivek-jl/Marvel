@@ -11,10 +11,7 @@ import Resolver
 
 final class MockAPIClient: APIClientType {
     
-    init(configuration: URLSessionConfiguration = Resolver.resolve(),
-         environment: ServerEnvironment = Resolver.resolve()) { }
-
-    func change(environment: ServerEnvironment) {}
+    init(configuration: URLSessionConfiguration = Resolver.resolve()) { }
 
     var isSuccess = true
 

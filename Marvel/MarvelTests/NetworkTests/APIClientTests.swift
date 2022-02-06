@@ -23,32 +23,6 @@ class APIClientTests: XCTestCase {
     }
 
    
-    func testEnvironmentSwitching() {
-        BlockTestProtocolHandler
-            .register(url: targetURL) { (request: URLRequest) -> (
-                response: HTTPURLResponse,
-                data: Data?
-            ) in
-            let response = HTTPURLResponse(
-                url: request.url!,
-                statusCode: 200,
-                httpVersion: BlockTestProtocolHandler.httpVersion,
-                headerFields: nil
-            )!
-            return (response, nil)
-            }
-
-        let config = URLSessionConfiguration.ephemeral
-        config.protocolClasses = [
-            BlockTestProtocolHandler.self
-        ]
-
-        let apiClient = APIClient(configuration: config, environment: .staging)
-        apiClient.change(environment: .production)
-        XCTAssert(apiClient.environment == .production)
-        
-    }
-    
     func testSuccessfulResponse() {
         let sampleJSON: Data? = "{ \"message\": \"success\"}".data(using: .utf8)
 
@@ -71,7 +45,7 @@ class APIClientTests: XCTestCase {
             BlockTestProtocolHandler.self
         ]
 
-        let apiClient = APIClient(configuration: config, environment: .production)
+        let apiClient = APIClient(configuration: config)
 
         let fetchCompleted = XCTestExpectation(description: "Success Fetch Completed")
         defer {
@@ -118,7 +92,7 @@ class APIClientTests: XCTestCase {
             BlockTestProtocolHandler.self
         ]
 
-        let apiClient = APIClient(configuration: config, environment: .production)
+        let apiClient = APIClient(configuration: config)
 
         let fetchFailed = XCTestExpectation(description: "Failure Fetch Completed")
         defer {
@@ -170,7 +144,7 @@ class APIClientTests: XCTestCase {
             BlockTestProtocolHandler.self
         ]
 
-        let apiClient = APIClient(configuration: config, environment: .production)
+        let apiClient = APIClient(configuration: config)
 
         let fetchFailed = XCTestExpectation(description: "Failure Fetch Completed")
         defer {

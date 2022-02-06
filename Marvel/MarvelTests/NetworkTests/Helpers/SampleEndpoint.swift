@@ -19,8 +19,8 @@ struct SampleEndpoint: EndpointType {
     
     var timeout: Double = 10
     
-    func buildRequest(_ environment: ServerEnvironment) -> URLRequest {
-        URLRequest(url: URL(string: "https://www.google.com")!)
+    var request: URLRequest {
+        return URLRequest(url: URL(string: "https://www.google.com")!)
     }
     
     
