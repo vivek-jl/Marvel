@@ -1,17 +1,19 @@
 //
-//  MockAPIClient.swift
+//  APIClientSpy.swift
 //  MarvelTests
 //
-//  Created by Vivek Jayakumar on 03/02/22.
+//  Created by Vivek Jayakumar on 6/2/22.
+//
 
+import Foundation
 import Combine
 import Foundation
-import Resolver
+
 @testable import Marvel
 
-final class MockAPIClient: APIClientType {
+final class APIClientSpy: APIClientType {
     
-    init(configuration: URLSessionConfiguration = Resolver.resolve()) { }
+    init(configuration: URLSessionConfiguration = .ephemeral) { }
 
     var isSuccess = true
 
@@ -21,6 +23,7 @@ final class MockAPIClient: APIClientType {
         -> AnyPublisher<T, APIError>
     {
         if let data = modelItem {
+            isSuccess = true
             return Just(data as! T)
                 .setFailureType(to: APIError.self)
                 .eraseToAnyPublisher()
