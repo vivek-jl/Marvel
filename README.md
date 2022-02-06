@@ -17,6 +17,6 @@ Dependency Injection is achieved using a library called Resolver. Different cont
 Networking layer is a wrapper around URLSession. URLProtocol is used to mock the network calls in unit tests.
 
 ### UI
-UIKit is used instead of SwiftUI for Views. MVVM-Coordinator pattern (using Combine) is used as presentation architecture.
+UIKit is used instead of SwiftUI for Views. MVVM pattern (using Combine) is used as presentation architecture.
 
 
