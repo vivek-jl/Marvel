@@ -9,6 +9,12 @@ import Foundation
 @testable import Marvel
 
 struct SampleEndpoint: EndpointType {
+    var queryItems: [URLQueryItem]? = nil
+    
+    var allQueryItems: [URLQueryItem] {
+        return commonQueryItems
+    }
+    
     var method: HTTPMethod = .get
     
     var headers: HTTPHeaders? = nil
