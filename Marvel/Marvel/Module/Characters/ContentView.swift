@@ -6,49 +6,73 @@
 //
 
 import SwiftUI
-import SDWebImageSwiftUI
 
 struct ContentView: View {
     
     @ObservedObject var viewModel: CharactersViewModel
-    
+    @State private var isShowingDetailView = false
+    @State private var selectedCharacter: Character? = nil
+    @State private var searchText = ""
+
     let columns: [GridItem] = [
-        GridItem(.flexible()),
-        GridItem(.flexible())
+        GridItem(.adaptive(minimum: 150))
     ]
     
     
     var body: some View {
-        GeometryReader { geometry in
+        NavigationView {
             ScrollView {
                 LazyVGrid(columns: columns) {
-                    ForEach(viewModel.characters, id: \.self) { character in
-                        VStack {
-                            AnimatedImage(url: character?.thumbnail?.url)
-                                .indicator(SDWebImageProgressIndicator.default)
-                                .transition(SDWebImageTransition.fade)
-                                .resizable()
-                                .frame(width: geometry.size.width / 2.1,
-                                       height:  geometry.size.width / 2)
-                                .aspectRatio(contentMode: .fill)
-                            Text(character?.name ?? "")
-                                .font(.body)
-                                .padding(.bottom, 5)
-                        }
-                        
+                    ForEach(searchResults, id: \.self) { character in
+                            CharacterItemView(character: character)
+                                .onTapGesture {
+                                    isShowingDetailView = true
+                                    selectedCharacter = character
+                                }
                     }
                 }
+                .background( NavigationLink(destination: CharacterDetailsView(viewModel: CharacterDetailsViewModel(character: selectedCharacter)), isActive: $isShowingDetailView) {
+                    EmptyView()
+                })
+            }
+            .searchable(text: $searchText)
+            .navigationBarTitle("Marvel", displayMode: .inline)
+            .onAppear {
+                viewModel.loadData()
             }
         }
-        .onAppear {
-            viewModel.loadData()
-        }
     }
+    
+    var searchResults: [Character] {
+            if searchText.isEmpty {
+                return viewModel.characters
+            } else {
+                return viewModel.characters.filter { $0.name.contains(searchText) }
+            }
+        }
     
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView(viewModel: CharactersViewModel())
+    }
+}
+
+
+extension View {
+    func cornerRadius(_ radius: CGFloat, corners: UIRectCorner) -> some View {
+        clipShape( RoundedCorner(radius: radius, corners: corners) )
+    }
+}
+
+struct RoundedCorner: Shape {
+    
+    var radius: CGFloat = .infinity
+    var corners: UIRectCorner = .allCorners
+    
+    func path(in rect: CGRect) -> Path {
+        let path = UIBezierPath(roundedRect: rect, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
+        return Path(path.cgPath)
     }
 }

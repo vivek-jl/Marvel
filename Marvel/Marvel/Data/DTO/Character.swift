@@ -11,7 +11,7 @@ import Foundation
 struct Character: Hashable {
     
     let id: Int?
-    let name: String?
+    let name: String
     let description: String?
     let thumbnail: Image?
     let comics: ComicList?
@@ -35,7 +35,7 @@ extension Character: Decodable {
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.id = try container.decodeIfPresent(Int.self, forKey: .id)
-        self.name = try container.decodeIfPresent(String.self, forKey: .name)
+        self.name = try container.decode(String.self, forKey: .name)
         self.description = try container.decodeIfPresent(String.self, forKey: .description)
         self.thumbnail = try container.decodeIfPresent(Image.self, forKey: .thumbnail)
         self.comics = try container.decodeIfPresent(ComicList.self, forKey: .comics)
