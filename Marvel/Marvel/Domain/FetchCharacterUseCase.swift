@@ -7,18 +7,25 @@
 
 import Foundation
 import Combine
+import Resolver
 
 protocol FetchCharacterUseCaseType {
-    mutating func fetchCharacterPage() -> AnyPublisher<[Character], APIError>
+     func fetchCharacterPage() -> AnyPublisher<[Character], APIError>
 }
 
-struct FetchCharacterUseCase: FetchCharacterUseCaseType {
+class FetchCharacterUseCase: FetchCharacterUseCaseType {
     
     let apiClient: APIClientType
     
-    var pageNumber = 0
+    private var pageNumber = 0
+    private var limit = 30
     
-    mutating func fetchCharacterPage() -> AnyPublisher<[Character], APIError> {
+    
+    init(apiClient: APIClientType = Resolver.resolve()) {
+        self.apiClient = apiClient
+    }
+    
+    func fetchCharacterPage() -> AnyPublisher<[Character], APIError> {
         
         let uiTesting = ProcessInfo.processInfo.arguments.contains("UITesting")
         if uiTesting == true {
@@ -35,11 +42,16 @@ struct FetchCharacterUseCase: FetchCharacterUseCaseType {
            
           } else {
               
+
               var endpoint = MarvelCharacterEndpoint()
-              endpoint.queryItems = [URLQueryItem(name: "limit", value: "30"),
-                                     URLQueryItem(name: "offset", value: "\(pageNumber)")]
+              let offset = pageNumber * limit
+              endpoint.queryItems = [URLQueryItem(name: "limit", value: "\(limit)"),
+                                     URLQueryItem(name: "offset", value: "\(offset)")]
               
               return apiClient.request(type: CharacterDataWrapper.self, endpoint: endpoint)
+                  .handleEvents(receiveOutput: { [weak self] value in
+                      if value.data?.count ?? 0 > 0 { self?.pageNumber += 1 }
+                    })
                   .map { return $0.data?.results }
                   .replaceNil(with: [])
                   .eraseToAnyPublisher()

@@ -13,7 +13,7 @@ struct ContentView: View {
     @State private var isShowingDetailView = false
     @State private var selectedCharacter: Character? = nil
     @State private var searchText = ""
-
+    
     let columns: [GridItem] = [
         GridItem(.adaptive(minimum: 150))
     ]
@@ -22,16 +22,27 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             ScrollView {
-                LazyVGrid(columns: columns) {
-                    ForEach(searchResults, id: \.self) { character in
+                VStack {
+                    LazyVGrid(columns: columns) {
+                        ForEach(searchResults, id: \.self) { character in
                             CharacterItemView(character: character)
                                 .onTapGesture {
                                     isShowingDetailView = true
                                     selectedCharacter = character
                                 }
+                        }
+                    }
+                    
+                    Button(action: viewModel.loadData) {
+                        Text("Load More")
                     }
                 }
-                .background( NavigationLink(destination: CharacterDetailsView(viewModel: CharacterDetailsViewModel(character: selectedCharacter)), isActive: $isShowingDetailView) {
+                
+                .background( NavigationLink(destination:
+                                                CharacterDetailsView(
+                                                    viewModel: CharacterDetailsViewModel(
+                                                        character: selectedCharacter)),
+                                            isActive: $isShowingDetailView) {
                     EmptyView()
                 })
             }
@@ -44,12 +55,12 @@ struct ContentView: View {
     }
     
     var searchResults: [Character] {
-            if searchText.isEmpty {
-                return viewModel.characters
-            } else {
-                return viewModel.characters.filter { $0.name.contains(searchText) }
-            }
+        if searchText.isEmpty {
+            return viewModel.characters
+        } else {
+            return viewModel.characters.filter { $0.name.contains(searchText) }
         }
+    }
     
 }
 
@@ -72,7 +83,9 @@ struct RoundedCorner: Shape {
     var corners: UIRectCorner = .allCorners
     
     func path(in rect: CGRect) -> Path {
-        let path = UIBezierPath(roundedRect: rect, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
+        let path = UIBezierPath(roundedRect: rect,
+                                byRoundingCorners: corners,
+                                cornerRadii: CGSize(width: radius, height: radius))
         return Path(path.cgPath)
     }
 }
