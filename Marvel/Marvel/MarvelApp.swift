@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Resolver
 
 @main
 struct MarvelApp: App {
@@ -13,5 +14,13 @@ struct MarvelApp: App {
         WindowGroup {
             ContentView(viewModel: CharactersViewModel())
         }
+    }
+}
+
+extension Resolver: ResolverRegistering {
+    public static func registerAllServices() {
+        register { APIClient(configuration: .default) as APIClientType }
+        register { FetchCharacterUseCase(apiClient: Resolver.resolve())
+            as FetchCharacterUseCaseType }
     }
 }

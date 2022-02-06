@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct StorySummary {
+struct StorySummary: Hashable {
     
     let resourceURI: String?
     let name: String?

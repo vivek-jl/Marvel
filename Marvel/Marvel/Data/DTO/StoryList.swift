@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct StoryList {
+struct StoryList: Hashable {
     
     let available: Int?
     let returned: Int?

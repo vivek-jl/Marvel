@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct SeriesList {
+struct SeriesList: Hashable {
     
     let available: Int?
     let returned: Int?

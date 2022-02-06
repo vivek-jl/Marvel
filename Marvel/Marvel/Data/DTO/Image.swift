@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Image {
+struct Image: Hashable {
     let path: String?
     let ext: String?
     

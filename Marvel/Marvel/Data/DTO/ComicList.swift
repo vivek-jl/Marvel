@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct ComicList {
+struct ComicList: Hashable {
     
     let available: Int?
     let returned: Int?

@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct EventSummary {
+struct EventSummary: Hashable {
     
     let resourceURI: String?
     let name: String?

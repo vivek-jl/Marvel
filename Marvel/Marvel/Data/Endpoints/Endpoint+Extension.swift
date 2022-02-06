@@ -14,7 +14,7 @@ extension EndpointType {
         components.scheme = "https"
         components.host = BaseURL.domain
         components.path = subPath
-        components.queryItems = self.queryItems
+        components.queryItems = self.allQueryItems
         
         guard let url = components.url else {
             fatalError("Invalid URL")

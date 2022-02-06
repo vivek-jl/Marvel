@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct EventList {
+struct EventList: Hashable {
     
     let available: Int?
     let returned: Int?

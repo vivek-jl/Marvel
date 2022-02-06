@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Character {
+struct Character: Hashable {
     
     let id: Int?
     let name: String?
