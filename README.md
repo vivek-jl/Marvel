@@ -19,4 +19,8 @@ Networking layer is a wrapper around URLSession. URLProtocol is used to mock the
 ### UI
 UIKit is used instead of SwiftUI for Views. MVVM pattern (using Combine) is used as presentation architecture.
 
+### Video Demo
+
+https://user-images.githubusercontent.com/20021603/152728774-90d9cb16-6d03-4271-b8cd-f75e1a579bc5.mp4
+
 
